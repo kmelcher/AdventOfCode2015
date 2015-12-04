@@ -1,0 +1,4 @@
+- Update with test for correct answer (to allow later regression test on modifications)
+- Update README with info on Advent of Code
+- Update github profile 
+- Go private (micro $7/mo)
