@@ -54,7 +54,7 @@ def isNice5b(line):
 
     print ("[%s] len=%d" % (line, len(line)))
     match = 0
-    for firstPairStart in range(0, len(line)-3):
+    for firstPairStart in range(0, len(line)-2):
         testPat = line[firstPairStart]+line[firstPairStart+1]
         if line.count(testPat) >= 2:
             match += 1
@@ -64,7 +64,8 @@ def isNice5b(line):
     # matching letter
     #  xyx
 
-    for i in range(0, len(line)-3):
+    for i in range(0, len(line)-2):
+        print "%s vs %s" % (line[i], line[i+2])
         if line[i] == line[i+2]:
             return True
 
