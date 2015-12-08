@@ -10,6 +10,36 @@ import re
 circuit = {}
 
 
+
+class Gate:
+    valOne = 0
+    refOne = ''
+    valTwo = 0
+    refTwo = ''
+    operation = ''
+
+    def value():
+        global circuit
+
+        if refOne != '':
+            valOne = circuit[refOne].value()
+        if refTwo != '':
+            valTwo = circuit[refTwo].value()
+
+        if "AND" in operation:
+            return valOne & valTwo
+        elif "OR" in operation:
+            return valOne | valTwo
+        elif "LSHIFT" in operation:
+            return valOne << valTwo
+        elif "RSHIFT" in operation:
+            return valOne >> valTwo
+        elif "NOT" in operation:
+            return ~valOne & 0xFFFF
+        elif "assign" in operation:
+            return valOne
+
+
 def initCircuit():
     global circuit
     circuit = {}
