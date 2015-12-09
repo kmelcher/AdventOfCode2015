@@ -6,4 +6,6 @@ x LSHIFT 2 -> f
 y RSHIFT 2 -> g
 NOT x -> h
 NOT y -> i
-x -> a
+3 AND x -> z
+z AND 2 -> q
+x AND y -> a
