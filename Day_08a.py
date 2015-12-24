@@ -17,21 +17,21 @@ def analyze(line):
     # remove outer quotes
     p = re.compile('^\"|\"$')
     (line, count) = p.subn('', line)
-    print "line out 1 [%s]" % line
+    #print "line out 1 [%s]" % line
 
     # remove escaped quotes
-    p = re.compile('\\\"')
+    p = re.compile('\\\\"')
     (line, count) = p.subn('X', line)
-    print "line out 2 [%s]" % line
+    #print "line out 2 [%s]" % line
 
     # remove hex lits
     p = re.compile('\\\\x..')
-    (line, count) = p.subn('X', line)
-    print "line out 3 [%s]" % line
+    (line, count) = p.subn('Y', line)
+    #print "line out 3 [%s]" % line
 
     # remove double backslash
-    p = re.compile('\\\\')
-    (line, count) = p.subn('x', line)
+    p = re.compile('\\\\\\\\')
+    (line, count) = p.subn('Z', line)
     print "line out 4 [%s]" % line
 
     memSpace = len(line)
@@ -51,9 +51,20 @@ def day8a(filename):
             line = line.strip()
 
             (fileSpace, memSpace) = analyze(line)
-            print "file=%3d mem=%3d %s" % (fileSpace, memSpace, line)
+            print "file=%3d mem=%3d" % (fileSpace, memSpace)
             totalFileSpace += fileSpace
             totalMemSpace += memSpace
     print "file=%3d mem=%3d diff=%d" % (totalFileSpace, totalMemSpace, totalFileSpace-totalMemSpace)
 
 day8a("Day_08.test.input")
+day8a("Day_08.input") # 1357 too high
+
+ # 1234567890123456789012345678   
+ # "njro\x68qgbx\xe4af\"\\suan"   28
+ # njroYqgbxYafXZsuan   18
+
+
+# todo 
+# output result and count to stdout
+# if -v output extra stuff to stderr
+# count number of subs by category (// /" /x55 )
